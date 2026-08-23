@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://shrinik-frontend.vercel.app">Live Website</a> ·
+  <a href="https://shrinik-club.vercel.app">Live Website</a> ·
   <a href="mailto:shrinikclub@gmail.com">Contact</a> ·
   <a href="https://www.instagram.com/shrinik_glbajaj">Instagram</a>
 </p>
