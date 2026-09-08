@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="shrinik-frontend/public/assets/shrinik-logo.png" alt="Shrinik Club Logo" width="180" />
+  <img src="Shrinik%20Website/shrinik-frontend/public/assets/shrinik-logo.png" alt="Shrinik Club Logo" width="180" />
 </p>
 
 <h1 align="center">Shrinik Club</h1>
@@ -42,42 +42,37 @@ LEARN → CREATE → COLLABORATE → EXPERIENCE → IMPACT
 
 ## Repository Structure
 
-This is the **Shrinik Club monorepo** containing the website frontend, AI chatbot backend, and content assets.
+This is the **Shrinik Club monorepo** containing the website frontend, AI chatbot backend, content assets, and Discord automation tools.
 
 ```
 Shrinik-Club/
-├── shrinik-frontend/        # Next.js website (React 19 + Tailwind CSS 4)
-│   ├── app/                 # Next.js App Router pages & layouts
-│   ├── components/          # Reusable UI components
-│   │   ├── chatbot/         # AI chatbot widget integration
-│   │   ├── effects/         # Scroll, parallax & animation effects
-│   │   ├── footer/          # Footer component
-│   │   ├── intro/           # Intro/splash screen
-│   │   ├── navbar/          # Navigation bar
-│   │   ├── sections/        # Page sections (About, Events, Gallery, Contact)
-│   │   └── team/            # Team cards & carousel
-│   ├── animations/          # GSAP & scroll animation utilities
-│   ├── Crousel/             # Carousel configuration
-│   ├── data/                # Static data (team members, etc.)
-│   ├── lib/                 # Shared constants & utilities
-│   └── public/              # Static assets (images, videos, SVGs)
+├── Shrinik Website/
+│   ├── shrinik-frontend/        # Next.js website (React 19 + Tailwind CSS 4)
+│   │   ├── app/                 # Next.js App Router pages & layouts
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── chatbot/         # AI chatbot widget integration
+│   │   │   ├── effects/         # Scroll, parallax & animation effects
+│   │   │   ├── footer/          # Footer component
+│   │   │   ├── intro/           # Intro splash screen
+│   │   │   ├── navbar/          # Interactive navigation bar
+│   │   │   ├── sections/        # Page sections (About, Events, Gallery, Contact)
+│   │   │   └── team/            # Team cards & carousel showcase
+│   │   ├── animations/          # GSAP & scroll animation utilities
+│   │   ├── Crousel/             # Depth carousel effects
+│   │   ├── data/                # Static data (team members, events, etc.)
+│   │   ├── lib/                 # Shared constants & feature flags (SHOW_GALLERY)
+│   │   └── public/              # Static assets (images, WebP portraits, SVGs)
+│   │
+│   └── shrinik-ai-chatbot/      # AI chatbot backend (Express.js)
+│       ├── server.js            # Express API server (POST /api/chat)
+│       ├── lib/                 # AI client (GLM), knowledge retrieval & rate limiting
+│       ├── knowledge/           # Club knowledge base (about, teams, events, FAQ)
+│       └── public/              # Demo page & embeddable widget
 │
-├── shrinik-ai-chatbot/      # AI chatbot backend (Express.js)
-│   ├── server.js            # Express API server (POST /api/chat)
-│   ├── lib/
-│   │   ├── ai.js            # Featherless AI (GLM model) integration
-│   │   ├── knowledge.js     # RAG-style knowledge retrieval
-│   │   └── rateLimit.js     # Per-IP rate limiting
-│   ├── knowledge/           # Club knowledge base (about, teams, events, FAQ)
-│   └── public/              # Demo page & embeddable widget
-│
-├── content/                 # Reference documents & brand assets
-│   ├── Shrinik_Premium_Polished_Website_Content.docx
-│   ├── Shrinik_Website_Content.docx
-│   └── shrinik.pdf
-│
-├── .gitignore               # Root-level git ignore rules
-└── README.md                # ← You are here
+├── Shrinik - content/           # Club reference documents, branding logos & media
+├── Shrinik Discord/             # Discord CRM automations & setup documentation
+├── .gitignore                   # Root-level git ignore rules
+└── README.md                    # Monorepo documentation
 ```
 
 ---
@@ -88,22 +83,22 @@ Shrinik-Club/
 
 | Technology | Version | Purpose |
 |---|---|---|
-| [Next.js](https://nextjs.org) | 16.3.1 | React framework with App Router |
+| [Next.js](https://nextjs.org) | 16.3.1 | React framework with App Router & Turbopack |
 | [React](https://react.dev) | 19.2.8 | UI library |
-| [Tailwind CSS](https://tailwindcss.com) | 4.x | Utility-first CSS framework |
-| [GSAP](https://gsap.com) | 3.15.0 | Professional-grade animations |
-| [Lenis](https://lenis.darkroom.engineering) | 1.3.26 | Smooth scroll engine |
-| [Lucide React](https://lucide.dev) | 1.31.0 | Icon library |
-| [React Icons](https://react-icons.github.io/react-icons) | 5.7.0 | Extended icon set |
-| TypeScript | 5.x | Type safety |
+| [Tailwind CSS](https://tailwindcss.com) | 4.x | Utility-first styling engine |
+| [GSAP](https://gsap.com) | 3.15.0 | High-performance interactive animations |
+| [Lenis](https://lenis.darkroom.engineering) | 1.3.26 | Smooth scrolling experience |
+| [Lucide React](https://lucide.dev) | 1.31.0 | Modern UI icon library |
+| [React Icons](https://react-icons.github.io/react-icons) | 5.7.0 | Social & brand icon set |
+| TypeScript | 5.x | End-to-end type safety |
 
 ### AI Chatbot — `shrinik-ai-chatbot/`
 
 | Technology | Purpose |
 |---|---|
 | [Express.js](https://expressjs.com) | HTTP API server |
-| [Featherless AI](https://featherless.ai) (GLM-5.2) | LLM inference (OpenAI-compatible) |
-| RAG Knowledge Base | Grounded responses from club documents |
+| [Featherless AI / Gemini](https://featherless.ai) | LLM inference for club Q&A |
+| RAG Knowledge Base | Grounded responses from club documentation |
 | Rate Limiting | 10 requests/min per IP |
 
 ---
@@ -114,7 +109,7 @@ Shrinik-Club/
 
 - **Node.js** ≥ 18.x
 - **npm** ≥ 9.x
-- A [Featherless AI](https://featherless.ai) API key (for the chatbot)
+- A [Featherless AI](https://featherless.ai) or Gemini API key (for local chatbot development)
 
 ---
 
@@ -128,31 +123,34 @@ cd Shrinik-Club
 ### 2. Frontend Setup
 
 ```bash
-cd shrinik-frontend
+cd "Shrinik Website/shrinik-frontend"
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the website.
+Open [http://localhost:3000](http://localhost:3000) (or `http://localhost:3001` if port 3000 is occupied) to view the website.
 
-#### Available Scripts
+#### Available Frontend Scripts
 
 | Command | Description |
 |---|---|
 | `npm run dev` | Start development server with hot reload |
 | `npm run build` | Create optimized production build |
 | `npm start` | Run production server |
-| `npm run lint` | Run ESLint checks |
+| `npm run lint` | Run ESLint validation |
+
+> **Feature Flag Note (Gallery Section):**
+> The Gallery section is safely archived by default. To re-enable it when gallery photos are ready, set `SHOW_GALLERY = true` in `shrinik-frontend/lib/constants.tsx`.
 
 ### 3. AI Chatbot Setup
 
 ```bash
-cd shrinik-ai-chatbot
+cd "../shrinik-ai-chatbot"
 npm install
 cp .env.example .env
 ```
 
-Edit `.env` and add your Featherless API key:
+Configure `.env`:
 
 ```env
 FEATHERLESS_API_KEY=your_actual_key_here
@@ -162,23 +160,19 @@ PORT=3000
 ALLOWED_ORIGIN=
 ```
 
-Then start the server:
+Start the chatbot server:
 
 ```bash
 npm start
-# or with file-watching for development:
+# or development with auto-reload:
 npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) and click the chat button to test.
-
-> **Note:** The frontend and chatbot both default to port 3000. Run the chatbot on a different port (e.g. `PORT=3001`) when developing both simultaneously.
 
 ---
 
 ## Embedding the Chatbot
 
-Host the chatbot server anywhere (Render, Railway, Vercel, etc.), then add one script tag to any page:
+Host the chatbot server on any cloud platform (Railway, Render, etc.), then embed it using:
 
 ```html
 <script
@@ -187,29 +181,19 @@ Host the chatbot server anywhere (Render, Railway, Vercel, etc.), then add one s
 ></script>
 ```
 
-Optional attributes: `data-title`, `data-subtitle`.
-
-Lock down CORS by setting `ALLOWED_ORIGIN` in `.env`:
-
-```env
-ALLOWED_ORIGIN=https://shrinik-frontend.vercel.app
-```
-
 ---
 
 ## Updating Club Knowledge
 
-The chatbot answers strictly from the files in `shrinik-ai-chatbot/knowledge/`. Each `## Heading` becomes a retrieval chunk.
+The chatbot answers strictly from markdown files in `shrinik-ai-chatbot/knowledge/`:
 
 | File | Content |
 |---|---|
 | `about.md` | Club overview, vision, pillars, ecosystem |
 | `teams.md` | Team structure and member roles |
-| `events.md` | Past and upcoming events |
-| `contact.md` | Contact details, HOD info, collaboration |
+| `events.md` | Past and upcoming events (e.g. GLB Talks, orientations) |
+| `contact.md` | Contact details, faculty coordinator info |
 | `faq.md` | Frequently asked questions |
-
-To update: edit any file → restart the chatbot server. Unknown queries are redirected to **shrinikclub@gmail.com**.
 
 ---
 
@@ -217,36 +201,17 @@ To update: edit any file → restart the chatbot server. Unknown queries are red
 
 ### Frontend (Vercel)
 
-The Next.js frontend is deployed on **Vercel**:
+The Next.js frontend is configured for deployment on **Vercel**:
 
 1. Import the repository on [vercel.com](https://vercel.com)
-2. Set the **Root Directory** to `shrinik-frontend`
-3. Vercel auto-detects Next.js and deploys
+2. Set the **Root Directory** to `Shrinik Website/shrinik-frontend`
+3. Vercel auto-detects Next.js and builds automatically
 
-### Chatbot (Any Node.js host)
+### Chatbot (Railway / Node.js Host)
 
-Deploy `shrinik-ai-chatbot/` to any Node.js host (Render, Railway, etc.):
-
-1. Set the root/start command to `node server.js`
-2. Configure environment variables from `.env.example`
-3. Set `ALLOWED_ORIGIN` to your frontend URL
-
----
-
-## Ecosystem Areas
-
-The club operates across eight verticals:
-
-| Area | Description |
-|---|---|
-| 💻 Tech | Web Dev, AI/ML, CP, emerging tech |
-| 🎨 Design | Visual identity, UI/UX, graphics |
-| ✍️ Editorial | Content writing, documentation |
-| 📢 PR | Public relations, outreach |
-| 📱 Social Media | Digital presence, campaigns |
-| 🎪 Events | Workshops, hackathons, flagship events |
-| 💃 Dance | Cultural performances |
-| 🎵 Music | Musical performances |
+1. Deploy `Shrinik Website/shrinik-ai-chatbot/`
+2. Set build/start command to `node server.js`
+3. Configure environment variables (`FEATHERLESS_API_KEY`, `ALLOWED_ORIGIN`)
 
 ---
 
@@ -257,13 +222,6 @@ The club operates across eight verticals:
 3. Commit your changes: `git commit -m "feat: add your feature"`
 4. Push to the branch: `git push origin feature/your-feature`
 5. Open a **Pull Request**
-
-### Guidelines
-
-- Follow the existing code style and project structure
-- Use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages
-- Never commit API keys, `.env` files, or `node_modules/`
-- Keep large media files (videos > 10 MB) out of the repository
 
 ---
 
@@ -282,8 +240,6 @@ The club operates across eight verticals:
 ## License
 
 This project is proprietary to **Shrinik Club, G.L. Bajaj Institute of Technology and Management**. All rights reserved.
-
----
 
 <p align="center">
   Built with ❤️ by the <strong>Shrinik Tech Team</strong>

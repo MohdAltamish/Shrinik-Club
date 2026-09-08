@@ -44,3 +44,9 @@ next-env.d.ts
 *.avi
 shrinik-frontend/Intro.mp4
 shrinik-frontend/shrinik-intro.mp4
+
+# AI Agent generated files
+CLAUDE.md
+*/CLAUDE.md
+AGENTS.md
+*/AGENTS.md
