@@ -382,7 +382,7 @@ export default function ContactSection() {
                     className="text-[#C6922E]/60"
                   />
 
-                  Let's connect
+                  Let&apos;s connect
                 </div>
 
                 <Magnetic strength={0.18}>

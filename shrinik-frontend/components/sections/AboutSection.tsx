@@ -294,7 +294,7 @@ export default function AboutSection() {
                 </span>
 
                 <p className="mt-5 max-w-2xl text-xl leading-9 text-[#F5F1E8]/80 md:text-2xl md:leading-10">
-                  A space where students don't just participate —
+                  A space where students don&apos;t just participate —
                   <span className="text-[#C6922E]"> they create.</span>
                 </p>
               </div>

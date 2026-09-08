@@ -284,9 +284,8 @@ export default function TeamSection() {
    */
 
   useEffect(() => {
-    setActiveMemberIndex(0);
-
     const frame = requestAnimationFrame(() => {
+      setActiveMemberIndex(0);
       const track = memberTrackRef.current;
 
       if (!track) return;

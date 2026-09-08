@@ -148,22 +148,24 @@ const DepthCarousel = ({
 
   const [active, setActive] = useState(0);
 
-  onChangeRef.current = onChange;
-  cfgRef.current = {
-    count,
-    depth,
-    spread,
-    tilt,
-    tiltDirection,
-    visibleCards,
-    falloff,
-    blur,
-    duration,
-    ease,
-    loop,
-    cardWidth,
-    autoplayDelay,
-  };
+  useEffect(() => {
+    onChangeRef.current = onChange;
+    cfgRef.current = {
+      count,
+      depth,
+      spread,
+      tilt,
+      tiltDirection,
+      visibleCards,
+      falloff,
+      blur,
+      duration,
+      ease,
+      loop,
+      cardWidth,
+      autoplayDelay,
+    };
+  });
 
   /* ---------------------------------------------------------------
      LAYOUT
