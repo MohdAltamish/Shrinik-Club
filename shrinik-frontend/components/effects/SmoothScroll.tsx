@@ -17,6 +17,8 @@ export default function SmoothScroll() {
       touchMultiplier: 1,
     });
 
+    (window as unknown as { __lenis?: Lenis | null }).__lenis = lenis;
+
     /*
      * Keep ScrollTrigger synchronized
      * with Lenis scrolling.
@@ -64,6 +66,8 @@ export default function SmoothScroll() {
     }
 
     return () => {
+      (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
+
       window.removeEventListener(
         "load",
         refresh,

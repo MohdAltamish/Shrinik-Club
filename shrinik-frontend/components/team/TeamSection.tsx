@@ -107,6 +107,8 @@ export default function TeamSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const teamTrackRef = useRef<HTMLDivElement>(null);
   const memberTrackRef = useRef<HTMLDivElement>(null);
+  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const selectedTeamRef = useRef<HTMLDivElement>(null);
 
   const activeTeam = teamGroups[activeTeamIndex];
 
@@ -146,6 +148,46 @@ export default function TeamSection() {
    * SCROLL HELPER
    * ==========================================================
    */
+
+  const scrollToSelectedTeam = useCallback(() => {
+    const target = scrollAnchorRef.current ?? selectedTeamRef.current;
+    if (!target) return;
+
+    const navbar = document.querySelector(".navbar-inner");
+    const navbarHeight = navbar
+      ? navbar.getBoundingClientRect().height
+      : 70;
+
+    const targetTop =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight -
+      24;
+
+    const lenis = (
+      window as unknown as {
+        __lenis?: {
+          scrollTo: (
+            destination: number | HTMLElement,
+            options?: Record<string, unknown>,
+          ) => void;
+        };
+      }
+    ).__lenis;
+
+    if (lenis && !prefersReducedMotion.current) {
+      lenis.scrollTo(Math.max(0, targetTop), {
+        duration: 1.1,
+      });
+    } else {
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: prefersReducedMotion.current
+          ? "auto"
+          : "smooth",
+      });
+    }
+  }, []);
 
   const scrollTrackToIndex = useCallback(
     (
@@ -216,6 +258,39 @@ export default function TeamSection() {
     [
       activeTeamIndex,
       scrollTrackToIndex,
+    ],
+  );
+
+  const handleTeamCardClick = useCallback(
+    (index: number) => {
+      if (!teamGroups.length) return;
+
+      const next =
+        (index + teamGroups.length) %
+        teamGroups.length;
+
+      if (next !== activeTeamIndex) {
+        setActiveTeamIndex(next);
+        setActiveMemberIndex(0);
+
+        requestAnimationFrame(() => {
+          scrollTrackToIndex(
+            teamTrackRef.current,
+            ".team-category-card",
+            next,
+          );
+        });
+      }
+
+      // Automatically and smoothly scroll down to show the team members
+      requestAnimationFrame(() => {
+        scrollToSelectedTeam();
+      });
+    },
+    [
+      activeTeamIndex,
+      scrollTrackToIndex,
+      scrollToSelectedTeam,
     ],
   );
 
@@ -814,7 +889,7 @@ export default function TeamSection() {
                     activeTeamIndex
                   }
                   onClick={() =>
-                    changeTeam(index)
+                    handleTeamCardClick(index)
                   }
                 />
               ),
@@ -823,10 +898,18 @@ export default function TeamSection() {
         </div>
 
         {/* ====================================================
-            SELECTED TEAM
+            SELECTED TEAM & MEMBERS
         ===================================================== */}
 
         <div
+          ref={scrollAnchorRef}
+          id="team-members-display"
+          className="scroll-mt-24 md:scroll-mt-28"
+          aria-hidden="true"
+        />
+
+        <div
+          ref={selectedTeamRef}
           className="
             team-content-animate
             mt-8
@@ -1376,6 +1459,7 @@ function TeamVisualCard({
       onClick={onClick}
       onMouseMove={moveCard}
       onMouseLeave={resetCard}
+      aria-label={`View ${team.name} members`}
       style={{
         transformStyle:
           "preserve-3d",
@@ -1390,6 +1474,7 @@ function TeamVisualCard({
         relative
         h-[430px]
         min-w-[310px]
+        cursor-pointer
         snap-center
         overflow-hidden
         rounded-[1.6rem]
@@ -1590,13 +1675,14 @@ function TeamVisualCard({
               duration-500
               ${
                 active
-                  ? "border-[#F0B83F]/60 bg-[#F0B83F] text-black"
-                  : "border-white/20 bg-black/20 text-white/60 group-hover:border-[#F0B83F]/60 group-hover:text-[#F0B83F]"
+                  ? "border-[#F0B83F]/60 bg-[#F0B83F] text-black shadow-[0_0_20px_rgba(240,184,63,0.35)] scale-105"
+                  : "border-white/20 bg-black/20 text-white/60 group-hover:border-[#F0B83F]/60 group-hover:text-[#F0B83F] group-hover:scale-105"
               }
             `}
           >
             <ArrowUpRight
               size={19}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
           </div>
 
