@@ -9,16 +9,15 @@ import {
 } from "react";
 
 import { FaLinkedinIn } from "react-icons/fa6";
+import { Mail } from "lucide-react";
 import gsap from "gsap";
 
 import IntroScreen from "@/components/intro/IntroScreen";
 import SmoothScroll from "@/components/effects/SmoothScroll";
 
-import { SHOW_GALLERY } from "@/lib/constants";
 import Navbar from "@/components/navbar/Navbar";
 import AboutSection from "@/components/sections/AboutSection";
 import EventsSection from "@/components/sections/EventsSection";
-import GallerySection from "@/components/sections/GallerySection";
 import ContactSection from "@/components/sections/ContactSection";
 import TeamSection from "@/components/team/TeamSection";
 import Footer from "@/components/footer/Footer";
@@ -1635,7 +1634,7 @@ export default function Website() {
         <AboutSection />
 
         {/* ======================================================
-            HOD
+            FACULTY + DEPARTMENT
         ====================================================== */}
 
         <section
@@ -1645,38 +1644,49 @@ export default function Website() {
             overflow-hidden
             bg-[#080808]
             px-6
-            py-28
+            py-24
             md:px-12
-            md:py-36
+            md:py-32
           "
         >
+          {/* ATMOSPHERE */}
           <div className="pointer-events-none absolute inset-0">
             <div
               className="
                 absolute
-                left-[-15%]
-                top-[10%]
-                h-[400px]
-                w-[400px]
+                left-[-12%]
+                top-[5%]
+                h-[430px]
+                w-[430px]
                 rounded-full
                 bg-[#650018]/10
                 blur-[140px]
               "
             />
-
             <div
               className="
                 absolute
-                right-[-10%]
-                bottom-[-15%]
-                h-[450px]
-                w-[450px]
+                right-[-12%]
+                top-[30%]
+                h-[500px]
+                w-[500px]
                 rounded-full
-                bg-[#C6922E]/[0.05]
-                blur-[150px]
+                bg-[#C6922E]/[0.045]
+                blur-[155px]
               "
             />
-
+            <div
+              className="
+                absolute
+                bottom-[-20%]
+                left-[35%]
+                h-[420px]
+                w-[420px]
+                rounded-full
+                bg-[#650018]/[0.06]
+                blur-[135px]
+              "
+            />
             <div
               className="
                 absolute
@@ -1685,11 +1695,10 @@ export default function Website() {
                 h-px
                 bg-gradient-to-r
                 from-transparent
-                via-[#C6922E]/30
+                via-[#C6922E]/35
                 to-transparent
               "
             />
-
             <div
               className="
                 absolute
@@ -1704,32 +1713,12 @@ export default function Website() {
             />
           </div>
 
-          <div
-            className="
-              relative
-              z-10
-              mx-auto
-              max-w-7xl
-            "
-          >
-            <div className="mb-12">
+          <div className="relative z-10 mx-auto max-w-7xl">
+            {/* SECTION HEADER */}
+            <div className="mb-12 md:mb-16">
               <div className="flex items-center gap-3">
-                <span
-                  className="
-                    h-px
-                    w-8
-                    bg-[#C6922E]
-                  "
-                />
-
-                <span
-                  className="
-                    text-[9px]
-                    uppercase
-                    tracking-[0.4em]
-                    text-[#C6922E]
-                  "
-                >
+                <span className="h-px w-8 bg-[#C6922E]" />
+                <span className="text-[9px] uppercase tracking-[0.38em] text-[#C6922E]">
                   Academic Leadership
                 </span>
               </div>
@@ -1737,72 +1726,68 @@ export default function Website() {
               <h2
                 className="
                   mt-6
-                  text-5xl
+                  max-w-4xl
+                  text-4xl
                   font-medium
-                  leading-[0.9]
-                  tracking-[-0.055em]
+                  leading-[1.08]
+                  tracking-[-0.045em]
                   text-[#F5F1E8]
-                  sm:text-6xl
-                  md:text-7xl
+                  sm:text-5xl
+                  md:text-6xl
+                  lg:text-7xl
+                  lg:leading-[1.04]
                 "
               >
-                Meet Our
+                Academic leadership.
                 <br />
-
-                <span className="text-white/25">
-                  HOD.
-                </span>
+                <span className="text-white/25">The foundation behind us.</span>
               </h2>
+
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-white/45 md:text-base md:leading-8">
+                The mentors and leaders guiding the Computer Science &amp; Engineering
+                community at G.L. Bajaj, supporting Shrinik as it grows alongside that ecosystem.
+              </p>
             </div>
 
+            {/* HOD FEATURE CARD */}
             <article
               className="
-                group
                 relative
                 overflow-hidden
                 rounded-[2rem]
                 border
                 border-white/[0.09]
                 bg-gradient-to-br
-                from-[#120A0C]
-                via-[#0D0B0B]
+                from-[#14090C]
+                via-[#0D0A0B]
                 to-[#080808]
-                p-6
-                shadow-[0_25px_80px_rgba(0,0,0,0.35)]
-                transition-all
-                duration-500
-                hover:border-[#C6922E]/25
-                md:p-10
+                shadow-[0_30px_100px_rgba(0,0,0,0.38)]
               "
             >
               <div
                 className="
                   pointer-events-none
                   absolute
-                  right-[-10%]
-                  top-[-30%]
-                  h-[450px]
-                  w-[450px]
+                  right-[-8%]
+                  top-[-25%]
+                  h-[480px]
+                  w-[480px]
                   rounded-full
-                  bg-[#650018]/10
-                  blur-[120px]
-                  transition-opacity
-                  duration-500
-                  group-hover:opacity-75
+                  bg-[#650018]/12
+                  blur-[125px]
                 "
               />
-
               <div
                 className="
                   pointer-events-none
                   absolute
-                  bottom-[-35%]
-                  left-[-15%]
-                  h-[350px]
-                  w-[350px]
+                  bottom-[-30%]
+                  left-[-8%]
+                  h-[340px]
+                  w-[340px]
                   rounded-full
-                  bg-[#C6922E]/[0.04]
-                  blur-[100px]
+                  bg-[#C6922E]/[0.035]
+                  blur-[110px]
                 "
               />
 
@@ -1813,28 +1798,18 @@ export default function Website() {
                   grid
                   items-center
                   gap-10
-                  lg:grid-cols-[1fr_320px]
-                  xl:grid-cols-[1fr_360px]
+                  p-6
+                  sm:p-8
+                  md:p-10
+                  lg:grid-cols-[1fr_420px]
+                  xl:grid-cols-[1fr_450px]
                 "
               >
+                {/* HOD CONTENT */}
                 <div>
                   <div className="flex items-center gap-3">
-                    <span
-                      className="
-                        h-px
-                        w-7
-                        bg-[#C6922E]/70
-                      "
-                    />
-
-                    <span
-                      className="
-                        text-[9px]
-                        uppercase
-                        tracking-[0.35em]
-                        text-[#C6922E]
-                      "
-                    >
+                    <span className="h-px w-8 bg-[#C6922E]/80" />
+                    <span className="text-[9px] uppercase tracking-[0.35em] text-[#C6922E]">
                       Head of Department
                     </span>
                   </div>
@@ -1854,81 +1829,23 @@ export default function Website() {
                     Dr. Sansar S. Chauhan
                   </h3>
 
-                  <p
-                    className="
-                      mt-5
-                      max-w-2xl
-                      text-base
-                      leading-7
-                      text-white/45
-                      md:text-lg
-                      md:leading-8
-                    "
-                  >
-                    Head of the Department of Computer
-                    Science and Engineering at G.L. Bajaj,
-                    dedicated to fostering excellence in
-                    teaching, research and innovation.
+                  <p className="mt-5 max-w-2xl text-base leading-7 text-white/55 md:text-lg md:leading-8">
+                    Head of the Department of Computer Science and Engineering at
+                    G.L. Bajaj, guiding students and faculty towards academic
+                    excellence, innovation and meaningful growth.
                   </p>
 
-                  <p
-                    className="
-                      mt-4
-                      max-w-2xl
-                      text-sm
-                      leading-7
-                      text-white/25
-                    "
-                  >
-                    His experience and academic vision
-                    continue to inspire students and
-                    faculty towards meaningful growth
-                    and holistic development.
-                  </p>
-
-                  <div
-                    className="
-                      mt-8
-                      flex
-                      flex-wrap
-                      items-center
-                      gap-x-5
-                      gap-y-3
-                    "
-                  >
-                    <span
-                      className="
-                        text-[8px]
-                        uppercase
-                        tracking-[0.25em]
-                        text-white/25
-                      "
-                    >
-                      G.L. Bajaj
+                  <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3">
+                    <span className="text-[8px] uppercase tracking-[0.25em] text-white/35">
+                      G.L. Bajaj Institute of Technology &amp; Management
                     </span>
-
-                    <span
-                      className="
-                        h-1
-                        w-1
-                        rounded-full
-                        bg-[#C6922E]/60
-                      "
-                    />
-
-                    <span
-                      className="
-                        text-[8px]
-                        uppercase
-                        tracking-[0.25em]
-                        text-white/25
-                      "
-                    >
-                      Computer Science & Engineering
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/65" />
+                    <span className="text-[8px] uppercase tracking-[0.25em] text-white/35">
+                      CSE Department
                     </span>
                   </div>
 
-                  <div className="mt-9">
+                  <div className="mt-8 flex flex-wrap items-center gap-3.5">
                     <a
                       href="https://www.linkedin.com/in/sansar-s-chauhan-ph-d-4969b223/"
                       target="_blank"
@@ -1936,46 +1853,73 @@ export default function Website() {
                       aria-label="Dr. Sansar S. Chauhan on LinkedIn"
                       title="View LinkedIn Profile"
                       className="
-                        group/linkedin
                         inline-flex
-                        h-12
-                        w-12
                         items-center
-                        justify-center
+                        gap-3
                         rounded-full
                         border
                         border-white/10
                         bg-white/[0.02]
-                        text-[#F5F1E8]/70
-                        backdrop-blur-sm
+                        px-5
+                        py-3
+                        text-[9px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-white/55
                         transition-all
                         duration-300
-                        hover:-translate-y-1
+                        hover:-translate-y-0.5
                         hover:border-[#C6922E]/50
-                        hover:bg-[#C6922E]/10
+                        hover:bg-[#C6922E]/[0.07]
                         hover:text-[#F5F1E8]
-                        hover:shadow-[0_0_30px_rgba(198,146,46,0.15)]
                       "
                     >
-                      <FaLinkedinIn
-                        size={21}
-                        className="
-                          transition-transform
-                          duration-300
-                          group-hover/linkedin:scale-110
-                        "
-                      />
+                      <FaLinkedinIn size={15} />
+                      LinkedIn Profile
+                      <span className="text-[#C6922E]">↗</span>
+                    </a>
+
+                    <a
+                      href="mailto:hod.cse@glbitm.ac.in"
+                      aria-label="Official Contact Email: hod.cse@glbitm.ac.in"
+                      title="Send Email to HOD"
+                      className="
+                        inline-flex
+                        items-center
+                        gap-2.5
+                        rounded-full
+                        border
+                        border-[#C6922E]/25
+                        bg-[#C6922E]/[0.04]
+                        px-5
+                        py-3
+                        text-[9px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-white/60
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:border-[#C6922E]/60
+                        hover:bg-[#C6922E]/[0.09]
+                        hover:text-[#F5F1E8]
+                      "
+                    >
+                      <Mail size={14} className="text-[#C6922E]" />
+                      <span className="text-white/30">Official:</span>
+                      <span className="text-[#C6922E]/90 lowercase tracking-normal text-xs font-normal">hod.cse@glbitm.ac.in</span>
                     </a>
                   </div>
                 </div>
 
-                <div className="mx-auto w-full max-w-[330px]">
+                {/* HOD PHOTO */}
+                <div className="mx-auto w-full max-w-[410px]">
                   <div
                     className="
                       relative
                       aspect-square
                       overflow-hidden
-                      rounded-full
+                      rounded-[1.75rem]
                       border
                       border-[#C6922E]/35
                       bg-gradient-to-br
@@ -1983,54 +1927,197 @@ export default function Website() {
                       via-[#16090C]
                       to-[#050505]
                       p-2
-                      shadow-[0_0_70px_rgba(198,146,46,0.08)]
+                      shadow-[0_0_70px_rgba(198,146,46,0.10)]
                     "
                   >
-                    <div
-                      className="
-                        pointer-events-none
-                        absolute
-                        inset-3
-                        z-20
-                        rounded-full
-                        border
-                        border-[#E3C477]/20
-                      "
-                    />
-
+                    <div className="pointer-events-none absolute inset-2 z-20 rounded-[1.3rem] border border-[#E3C477]/20" />
                     <img
                       src="/images/hod-sansar-chauhan.webp"
-                      alt="Dr. Sansar S. Chauhan"
-                      width={360}
-                      height={360}
+                      alt="Dr. Sansar S. Chauhan, Head of Department"
+                      width={450}
+                      height={450}
                       loading="lazy"
                       decoding="async"
-                      className="
-                        h-full
-                        w-full
-                        rounded-full
-                        object-cover
-                        object-center
-                        transition-transform
-                        duration-700
-                        group-hover:scale-[1.035]
-                      "
+                      className="h-full w-full rounded-[1.3rem] object-cover object-center"
                       draggable={false}
                     />
                   </div>
+                  <p className="mt-4 text-center text-[8px] uppercase tracking-[0.28em] text-white/22">
+                    Academic Leadership · Shrinik
+                  </p>
+                </div>
+              </div>
+            </article>
 
-                  <div className="mt-5 text-center">
-                    <p
+            {/* FACULTY COORDINATOR FEATURE CARD */}
+            <article
+              className="
+                mt-10
+                relative
+                overflow-hidden
+                rounded-[2rem]
+                border
+                border-white/[0.09]
+                bg-gradient-to-br
+                from-[#14090C]
+                via-[#0D0A0B]
+                to-[#080808]
+                p-6
+                shadow-[0_30px_100px_rgba(0,0,0,0.38)]
+                sm:p-8
+                md:p-10
+              "
+            >
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  left-[-8%]
+                  top-[-25%]
+                  h-[480px]
+                  w-[480px]
+                  rounded-full
+                  bg-[#650018]/10
+                  blur-[125px]
+                "
+              />
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  bottom-[-30%]
+                  right-[-8%]
+                  h-[340px]
+                  w-[340px]
+                  rounded-full
+                  bg-[#C6922E]/[0.03]
+                  blur-[110px]
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  items-center
+                  gap-8
+                  lg:grid-cols-[1fr_270px]
+                  xl:grid-cols-[1fr_290px]
+                "
+              >
+                {/* COORDINATOR CONTENT (COMPACT TEXT) */}
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-6 bg-[#C6922E]/70" />
+                    <span className="text-[8px] uppercase tracking-[0.34em] text-[#C6922E]">
+                      Faculty Coordinator
+                    </span>
+                  </div>
+
+                  <h3
+                    className="
+                      mt-4
+                      text-2xl
+                      font-medium
+                      leading-tight
+                      tracking-[-0.035em]
+                      text-[#F5F1E8]
+                      sm:text-3xl
+                    "
+                  >
+                    Saijshree Shrivastava
+                  </h3>
+
+                  <p className="mt-3.5 max-w-xl text-sm leading-6 text-white/50 md:text-[14.5px] md:leading-7">
+                    Faculty Coordinator of Shrinik, providing continuous guidance,
+                    mentorship, and institutional support to student initiatives across
+                    technology, culture, and creative avenues at G.L. Bajaj.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      G.L. Bajaj Institute of Technology &amp; Management
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      CSE Department
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      Shrinik Club
+                    </span>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/saijshree-srivastava-0012ba177/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Saijshree Shrivastava on LinkedIn"
+                      title="View LinkedIn Profile"
                       className="
+                        inline-flex
+                        items-center
+                        gap-2.5
+                        rounded-full
+                        border
+                        border-white/10
+                        bg-white/[0.02]
+                        px-4
+                        py-2.5
                         text-[8px]
                         uppercase
-                        tracking-[0.3em]
-                        text-white/20
+                        tracking-[0.2em]
+                        text-white/55
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:border-[#C6922E]/50
+                        hover:bg-[#C6922E]/[0.07]
+                        hover:text-[#F5F1E8]
                       "
                     >
-                      Academic Leadership · Shrinik
-                    </p>
+                      <FaLinkedinIn size={13} />
+                      LinkedIn Profile
+                      <span className="text-[#C6922E]">↗</span>
+                    </a>
                   </div>
+                </div>
+
+                {/* COORDINATOR PHOTO (COMPACT) */}
+                <div className="mx-auto w-full max-w-[250px] sm:max-w-[260px]">
+                  <div
+                    className="
+                      relative
+                      aspect-square
+                      overflow-hidden
+                      rounded-[1.4rem]
+                      border
+                      border-[#C6922E]/30
+                      bg-gradient-to-br
+                      from-[#3A0712]/70
+                      via-[#16090C]
+                      to-[#050505]
+                      p-1.5
+                      shadow-[0_0_40px_rgba(198,146,46,0.07)]
+                    "
+                  >
+                    <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
+                    <img
+                      src="/images/faculty-coordinator.webp"
+                      alt="Saijshree Shrivastava, Faculty Coordinator"
+                      width={300}
+                      height={300}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full rounded-[1.1rem] object-cover object-center"
+                      draggable={false}
+                    />
+                  </div>
+                  <p className="mt-3 text-center text-[7.5px] uppercase tracking-[0.25em] text-white/20">
+                    Faculty Mentorship · Shrinik
+                  </p>
                 </div>
               </div>
             </article>
@@ -2048,11 +2135,6 @@ export default function Website() {
         ====================================================== */}
 
         <EventsSection />
-
-        {/* ======================================================
-            GALLERY (Archived for now - enabled via SHOW_GALLERY)
-        ====================================================== */}
-        {SHOW_GALLERY && <GallerySection />}
 
         {/* ======================================================
             CONTACT

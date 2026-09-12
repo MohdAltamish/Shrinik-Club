@@ -13,14 +13,11 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-import { SHOW_GALLERY } from "@/lib/constants";
-
 const footerLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Team", href: "#team" },
   { label: "Events", href: "#events" },
-  ...(SHOW_GALLERY ? [{ label: "Gallery", href: "#gallery" }] : []),
   { label: "Contact", href: "#contact" },
 ];
 

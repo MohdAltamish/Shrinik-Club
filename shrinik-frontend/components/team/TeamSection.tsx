@@ -62,6 +62,8 @@ const teamCoverImages: Record<string, string> = {
     "/images/team-covers/dance-avenue.png",
   "music avenue":
     "/images/team-covers/music-avenue.png",
+  "art avenue":
+    "/images/team-covers/art-avenue.png",
 };
 
 const teamCoverByCategory: Record<string, string> = {
@@ -795,21 +797,22 @@ export default function TeamSection() {
           <div
             className="
               team-description
-              max-w-sm
+              max-w-md
               md:pb-1
             "
           >
             <p
               className="
                 text-sm
-                leading-7
-                text-white/35
+                leading-relaxed
+                text-white/45
                 md:text-base
+                md:leading-7
               "
             >
-              One community. Different skills.
-              Different ideas. One team building
-              the Shrinik experience.
+              One community. Different skills. Different ideas.
+              <br className="hidden sm:block" />
+              One team building the Shrinik experience.
             </p>
           </div>
         </div>
