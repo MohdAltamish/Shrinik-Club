@@ -27,6 +27,11 @@ export default function Website() {
   const [introComplete, setIntroComplete] =
     useState(false);
 
+  const [hodPhotoOpen, setHodPhotoOpen] = useState(false);
+  const [facultyPhotoOpen, setFacultyPhotoOpen] = useState(false);
+  const [kiranPhotoOpen, setKiranPhotoOpen] = useState(false);
+  const [kiranPhotoAvailable, setKiranPhotoAvailable] = useState(true);
+
   const heroRef =
     useRef<HTMLElement>(null);
 
@@ -1914,34 +1919,41 @@ export default function Website() {
 
                 {/* HOD PHOTO */}
                 <div className="mx-auto w-full max-w-[410px]">
-                  <div
-                    className="
-                      relative
-                      aspect-square
-                      overflow-hidden
-                      rounded-[1.75rem]
-                      border
-                      border-[#C6922E]/35
-                      bg-gradient-to-br
-                      from-[#3A0712]
-                      via-[#16090C]
-                      to-[#050505]
-                      p-2
-                      shadow-[0_0_70px_rgba(198,146,46,0.10)]
-                    "
+                  <button
+                    type="button"
+                    onClick={() => setHodPhotoOpen(true)}
+                    aria-label="View enlarged photo of Dr. Sansar S. Chauhan"
+                    className="group relative block w-full cursor-zoom-in rounded-[1.75rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
                   >
-                    <div className="pointer-events-none absolute inset-2 z-20 rounded-[1.3rem] border border-[#E3C477]/20" />
-                    <img
-                      src="/images/hod-sansar-chauhan.webp"
-                      alt="Dr. Sansar S. Chauhan, Head of Department"
-                      width={450}
-                      height={450}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full rounded-[1.3rem] object-cover object-center"
-                      draggable={false}
-                    />
-                  </div>
+                    <div
+                      className="
+                        relative
+                        aspect-square
+                        overflow-hidden
+                        rounded-[1.75rem]
+                        border
+                        border-[#C6922E]/35
+                        bg-gradient-to-br
+                        from-[#3A0712]
+                        via-[#16090C]
+                        to-[#050505]
+                        p-2
+                        shadow-[0_0_70px_rgba(198,146,46,0.10)]
+                      "
+                    >
+                      <div className="pointer-events-none absolute inset-2 z-20 rounded-[1.3rem] border border-[#E3C477]/20" />
+                      <img
+                        src="/images/hod-sansar-chauhan.webp"
+                        alt="Dr. Sansar S. Chauhan, Head of Department"
+                        width={450}
+                        height={450}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full rounded-[1.3rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+                        draggable={false}
+                      />
+                    </div>
+                  </button>
                   <p className="mt-4 text-center text-[8px] uppercase tracking-[0.28em] text-white/22">
                     Academic Leadership · Shrinik
                   </p>
@@ -2087,42 +2099,297 @@ export default function Website() {
 
                 {/* COORDINATOR PHOTO (COMPACT) */}
                 <div className="mx-auto w-full max-w-[250px] sm:max-w-[260px]">
-                  <div
-                    className="
-                      relative
-                      aspect-square
-                      overflow-hidden
-                      rounded-[1.4rem]
-                      border
-                      border-[#C6922E]/30
-                      bg-gradient-to-br
-                      from-[#3A0712]/70
-                      via-[#16090C]
-                      to-[#050505]
-                      p-1.5
-                      shadow-[0_0_40px_rgba(198,146,46,0.07)]
-                    "
+                  <button
+                    type="button"
+                    onClick={() => setFacultyPhotoOpen(true)}
+                    aria-label="View enlarged photo of Faculty Coordinator Saijshree Shrivastava"
+                    className="group relative block w-full cursor-zoom-in rounded-[1.4rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
                   >
-                    <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
-                    <img
-                      src="/images/faculty-coordinator.webp"
-                      alt="Saijshree Shrivastava, Faculty Coordinator"
-                      width={300}
-                      height={300}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full rounded-[1.1rem] object-cover object-center"
-                      draggable={false}
-                    />
-                  </div>
+                    <div
+                      className="
+                        relative
+                        aspect-square
+                        overflow-hidden
+                        rounded-[1.4rem]
+                        border
+                        border-[#C6922E]/30
+                        bg-gradient-to-br
+                        from-[#3A0712]/70
+                        via-[#16090C]
+                        to-[#050505]
+                        p-1.5
+                        shadow-[0_0_40px_rgba(198,146,46,0.07)]
+                      "
+                    >
+                      <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
+                      <img
+                        src="/images/faculty-coordinator.webp"
+                        alt="Saijshree Shrivastava, Faculty Coordinator"
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full rounded-[1.1rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+                        draggable={false}
+                      />
+                    </div>
+                  </button>
                   <p className="mt-3 text-center text-[7.5px] uppercase tracking-[0.25em] text-white/20">
                     Faculty Mentorship · Shrinik
                   </p>
                 </div>
               </div>
             </article>
+
+            {/* KIRAN SINGH FEATURE CARD */}
+            <article
+              className="
+                mt-10
+                relative
+                overflow-hidden
+                rounded-[2rem]
+                border
+                border-white/[0.09]
+                bg-gradient-to-br
+                from-[#14090C]
+                via-[#0D0A0B]
+                to-[#080808]
+                p-6
+                shadow-[0_30px_100px_rgba(0,0,0,0.38)]
+                sm:p-8
+                md:p-10
+              "
+            >
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  left-[-8%]
+                  top-[-25%]
+                  h-[480px]
+                  w-[480px]
+                  rounded-full
+                  bg-[#650018]/10
+                  blur-[125px]
+                "
+              />
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  bottom-[-30%]
+                  right-[-8%]
+                  h-[340px]
+                  w-[340px]
+                  rounded-full
+                  bg-[#C6922E]/[0.03]
+                  blur-[110px]
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  items-center
+                  gap-8
+                  lg:grid-cols-[1fr_270px]
+                  xl:grid-cols-[1fr_290px]
+                "
+              >
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-6 bg-[#C6922E]/70" />
+                    <span className="text-[8px] uppercase tracking-[0.34em] text-[#C6922E]">
+                      Faculty Coordinator
+                    </span>
+                  </div>
+
+                  <h3
+                    className="
+                      mt-4
+                      text-2xl
+                      font-medium
+                      leading-tight
+                      tracking-[-0.035em]
+                      text-[#F5F1E8]
+                      sm:text-3xl
+                    "
+                  >
+                    Ms. Kiran Singh
+                  </h3>
+
+                  <p className="mt-3.5 max-w-xl text-sm leading-6 text-white/50 md:text-[14.5px] md:leading-7">
+                    Assistant Professor · Department of CSE
+                  </p>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/40 md:text-[14.5px] md:leading-7">
+                    As Faculty Coordinator, she provides direction, encouragement
+                    and student-first mentorship while helping Shrinik students
+                    turn ideas into action.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      G.L. Bajaj Institute of Technology &amp; Management
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      CSE Department
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      Shrinik Club
+                    </span>
+                  </div>
+                </div>
+
+                {/* KIRAN PHOTO: fall back gracefully if the image has not been added yet. */}
+                <div className="mx-auto w-full max-w-[250px] sm:max-w-[260px]">
+                  {kiranPhotoAvailable ? (
+                    <button
+                      type="button"
+                      onClick={() => setKiranPhotoOpen(true)}
+                      aria-label="View enlarged photo of Faculty Coordinator Ms. Kiran Singh"
+                      className="group relative block w-full cursor-zoom-in rounded-[1.4rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
+                    >
+                      <div
+                        className="
+                          relative
+                          aspect-square
+                          overflow-hidden
+                          rounded-[1.4rem]
+                          border
+                          border-[#C6922E]/30
+                          bg-gradient-to-br
+                          from-[#3A0712]/70
+                          via-[#16090C]
+                          to-[#050505]
+                          p-1.5
+                          shadow-[0_0_40px_rgba(198,146,46,0.07)]
+                        "
+                      >
+                        <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
+                        <img
+                          src="/images/kiran-singh.webp"
+                          alt="Ms. Kiran Singh, Faculty Coordinator"
+                          width={300}
+                          height={300}
+                          loading="lazy"
+                          decoding="async"
+                          onError={() => setKiranPhotoAvailable(false)}
+                          className="h-full w-full rounded-[1.1rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+                          draggable={false}
+                        />
+                      </div>
+                    </button>
+                  ) : (
+                    <div
+                      className="flex aspect-square w-full items-center justify-center rounded-[1.4rem] border border-[#C6922E]/30 bg-gradient-to-br from-[#3A0712]/70 via-[#16090C] to-[#050505] shadow-[0_0_40px_rgba(198,146,46,0.07)]"
+                      role="img"
+                      aria-label="Photo of Ms. Kiran Singh is not available"
+                    >
+                      <span className="text-6xl font-medium tracking-[-0.06em] text-[#C6922E]/75">KS</span>
+                    </div>
+                  )}
+                  <p className="mt-3 text-center text-[7.5px] uppercase tracking-[0.25em] text-white/20">
+                    Faculty Mentorship · Shrinik
+                  </p>
+                </div>
+              </div>
+            </article>
+
           </div>
         </section>
+
+        {/* ======================================================
+            FACULTY PHOTO LIGHTBOXES
+        ====================================================== */}
+
+        {hodPhotoOpen && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Enlarged HOD photo"
+            onClick={() => setHodPhotoOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setHodPhotoOpen(false)}
+              aria-label="Close enlarged HOD photo"
+              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-2xl leading-none text-white/75 transition-all duration-300 hover:border-[#C6922E]/50 hover:bg-[#C6922E]/10 hover:text-[#C6922E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60"
+            >
+              ×
+            </button>
+            <img
+              src="/images/hod-sansar-chauhan.webp"
+              alt="Dr. Sansar S. Chauhan, Head of Department"
+              width={1000}
+              height={1000}
+              className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
+              onClick={(event) => event.stopPropagation()}
+            />
+          </div>
+        )}
+
+        {facultyPhotoOpen && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Enlarged Faculty Coordinator photo"
+            onClick={() => setFacultyPhotoOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setFacultyPhotoOpen(false)}
+              aria-label="Close enlarged Faculty Coordinator photo"
+              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-2xl leading-none text-white/75 transition-all duration-300 hover:border-[#C6922E]/50 hover:bg-[#C6922E]/10 hover:text-[#C6922E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60"
+            >
+              ×
+            </button>
+            <img
+              src="/images/faculty-coordinator.webp"
+              alt="Saijshree Shrivastava, Faculty Coordinator"
+              width={1000}
+              height={1000}
+              className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
+              onClick={(event) => event.stopPropagation()}
+            />
+          </div>
+        )}
+
+        {kiranPhotoOpen && kiranPhotoAvailable && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Enlarged Kiran Singh photo"
+            onClick={() => setKiranPhotoOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setKiranPhotoOpen(false)}
+              aria-label="Close enlarged Kiran Singh photo"
+              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-2xl leading-none text-white/75 transition-all duration-300 hover:border-[#C6922E]/50 hover:bg-[#C6922E]/10 hover:text-[#C6922E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60"
+            >
+              ×
+            </button>
+            <img
+              src="/images/kiran-singh.webp"
+              alt="Ms. Kiran Singh, Faculty Coordinator"
+              width={1000}
+              height={1000}
+              className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
+              onClick={(event) => event.stopPropagation()}
+              onError={() => {
+                setKiranPhotoAvailable(false);
+                setKiranPhotoOpen(false);
+              }}
+            />
+          </div>
+        )}
 
         {/* ======================================================
             TEAM
