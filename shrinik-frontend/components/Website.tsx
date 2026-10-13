@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { FaLinkedinIn } from "react-icons/fa6";
+import { Mail } from "lucide-react";
 import gsap from "gsap";
 
 import IntroScreen from "@/components/intro/IntroScreen";
@@ -23,22 +24,28 @@ import Footer from "@/components/footer/Footer";
 import Chatbot from "@/components/chatbot/Chatbot";
 
 export default function Website() {
-  const [introComplete, setIntroComplete] = useState(false);
+  const [introComplete, setIntroComplete] =
+    useState(false);
 
   const [hodPhotoOpen, setHodPhotoOpen] = useState(false);
   const [facultyPhotoOpen, setFacultyPhotoOpen] = useState(false);
   const [kiranPhotoOpen, setKiranPhotoOpen] = useState(false);
+  const [kiranPhotoAvailable, setKiranPhotoAvailable] = useState(true);
 
-  const heroRef = useRef<HTMLElement>(null);
+  const heroRef =
+    useRef<HTMLElement>(null);
 
-  const mouseFrame = useRef<number | null>(null);
+  const mouseFrame =
+    useRef<number | null>(null);
 
-  const mousePosition = useRef({
-    x: 0,
-    y: 0,
-  });
+  const mousePosition =
+    useRef({
+      x: 0,
+      y: 0,
+    });
 
-  const mouseActive = useRef(false);
+  const mouseActive =
+    useRef(false);
 
   /*
    * ============================================================
@@ -46,9 +53,10 @@ export default function Website() {
    * ============================================================
    */
 
-  const handleIntroComplete = useCallback(() => {
-    setIntroComplete(true);
-  }, []);
+  const handleIntroComplete =
+    useCallback(() => {
+      setIntroComplete(true);
+    }, []);
 
   /*
    * ============================================================
@@ -57,36 +65,70 @@ export default function Website() {
    */
 
   useLayoutEffect(() => {
-    if (!introComplete || !heroRef.current) {
+    if (
+      !introComplete ||
+      !heroRef.current
+    ) {
       return;
     }
 
     const hero = heroRef.current;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
     const ctx = gsap.context(() => {
-      const letters = gsap.utils.toArray<HTMLElement>(".hero-letter");
+      const letters =
+        gsap.utils.toArray<HTMLElement>(
+          ".hero-letter",
+        );
 
-      const logo = hero.querySelector(".hero-logo");
+      const logo =
+        hero.querySelector(
+          ".hero-logo",
+        );
 
-      const eyebrow = hero.querySelector(".hero-eyebrow");
+      const eyebrow =
+        hero.querySelector(
+          ".hero-eyebrow",
+        );
 
-      const titleSweep = hero.querySelector(".hero-title-sweep");
+      const titleSweep =
+        hero.querySelector(
+          ".hero-title-sweep",
+        );
 
-      const titleLine = hero.querySelector(".hero-title-line");
+      const titleLine =
+        hero.querySelector(
+          ".hero-title-line",
+        );
 
-      const titleGlow = hero.querySelector(".hero-title-glow");
+      const titleGlow =
+        hero.querySelector(
+          ".hero-title-glow",
+        );
 
-      const heroLine = hero.querySelector(".hero-line");
+      const heroLine =
+        hero.querySelector(
+          ".hero-line",
+        );
 
-      const description = hero.querySelector(".hero-description");
+      const description =
+        hero.querySelector(
+          ".hero-description",
+        );
 
-      const buttons = hero.querySelector(".hero-buttons");
+      const buttons =
+        hero.querySelector(
+          ".hero-buttons",
+        );
 
-      const scroll = hero.querySelector(".hero-scroll");
+      const scroll =
+        hero.querySelector(
+          ".hero-scroll",
+        );
 
       /*
        * Reduced motion
@@ -105,13 +147,20 @@ export default function Website() {
           ].filter(Boolean),
           {
             opacity: 1,
-            clearProps: "transform,filter,textShadow",
+            clearProps:
+              "transform,filter,textShadow",
           },
         );
 
-        gsap.set([titleSweep, titleLine].filter(Boolean), {
-          clearProps: "transform,opacity",
-        });
+        gsap.set(
+          [titleSweep, titleLine].filter(
+            Boolean,
+          ),
+          {
+            clearProps:
+              "transform,opacity",
+          },
+        );
 
         return;
       }
@@ -128,7 +177,8 @@ export default function Website() {
         rotateZ: 2,
         scale: 0.8,
         filter: "blur(10px)",
-        transformOrigin: "50% 100%",
+        transformOrigin:
+          "50% 100%",
         transformPerspective: 900,
         willChange: "transform,opacity",
       });
@@ -136,7 +186,8 @@ export default function Website() {
       gsap.set(titleSweep, {
         xPercent: -180,
         opacity: 0,
-        willChange: "transform,opacity",
+        willChange:
+          "transform,opacity",
       });
 
       gsap.set(titleLine, {
@@ -148,11 +199,12 @@ export default function Website() {
        * Main timeline
        */
 
-      const timeline = gsap.timeline({
-        defaults: {
-          ease: "power3.out",
-        },
-      });
+      const timeline =
+        gsap.timeline({
+          defaults: {
+            ease: "power3.out",
+          },
+        });
 
       /*
        * Logo
@@ -237,7 +289,8 @@ export default function Website() {
       timeline.to(
         letters,
         {
-          backgroundPosition: "100% 50%",
+          backgroundPosition:
+            "100% 50%",
           duration: 1.25,
           stagger: 0.035,
           ease: "power2.inOut",
@@ -291,7 +344,8 @@ export default function Website() {
         heroLine,
         {
           scaleX: 0,
-          transformOrigin: "left center",
+          transformOrigin:
+            "left center",
         },
         {
           scaleX: 1,
@@ -361,14 +415,17 @@ export default function Website() {
 
       if (titleGlow) {
         timeline.call(() => {
-          gsap.to(titleGlow, {
-            opacity: 0.55,
-            scale: 1.05,
-            duration: 3.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
+          gsap.to(
+            titleGlow,
+            {
+              opacity: 0.55,
+              scale: 1.05,
+              duration: 3.5,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+            },
+          );
         });
       }
     }, hero);
@@ -376,8 +433,13 @@ export default function Website() {
     return () => {
       ctx.revert();
 
-      if (mouseFrame.current !== null) {
-        cancelAnimationFrame(mouseFrame.current);
+      if (
+        mouseFrame.current !==
+        null
+      ) {
+        cancelAnimationFrame(
+          mouseFrame.current,
+        );
 
         mouseFrame.current = null;
       }
@@ -393,48 +455,82 @@ export default function Website() {
    */
 
   useEffect(() => {
-    if (!introComplete || !heroRef.current) {
+    if (
+      !introComplete ||
+      !heroRef.current
+    ) {
       return;
     }
 
     const hero = heroRef.current;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const coarsePointer =
+      window.matchMedia(
+        "(pointer: coarse)",
+      ).matches;
 
     /*
      * Mouse parallax is intentionally
      * disabled on touch devices.
      */
 
-    if (reducedMotion || coarsePointer) {
+    if (
+      reducedMotion ||
+      coarsePointer
+    ) {
       return;
     }
 
-    const logo = hero.querySelector<HTMLElement>(".hero-logo-parallax");
+    const logo =
+      hero.querySelector<HTMLElement>(
+        ".hero-logo-parallax",
+      );
 
-    const content = hero.querySelector<HTMLElement>(".hero-content-parallax");
+    const content =
+      hero.querySelector<HTMLElement>(
+        ".hero-content-parallax",
+      );
 
-    const goldGlow = hero.querySelector<HTMLElement>(".hero-gold-glow");
+    const goldGlow =
+      hero.querySelector<HTMLElement>(
+        ".hero-gold-glow",
+      );
 
-    const burgundyGlow = hero.querySelector<HTMLElement>(".hero-burgundy-glow");
+    const burgundyGlow =
+      hero.querySelector<HTMLElement>(
+        ".hero-burgundy-glow",
+      );
 
-    const titleGlow = hero.querySelector<HTMLElement>(".hero-title-glow");
+    const titleGlow =
+      hero.querySelector<HTMLElement>(
+        ".hero-title-glow",
+      );
 
-    const letters = Array.from(
-      hero.querySelectorAll<HTMLElement>(".hero-letter"),
-    );
+    const letters =
+      Array.from(
+        hero.querySelectorAll<HTMLElement>(
+          ".hero-letter",
+        ),
+      );
 
-    const parallaxElements = [
-      logo,
-      content,
-      goldGlow,
-      burgundyGlow,
-      titleGlow,
-    ].filter((element): element is HTMLElement => element !== null);
+    const parallaxElements =
+      [
+        logo,
+        content,
+        goldGlow,
+        burgundyGlow,
+        titleGlow,
+      ].filter(
+        (
+          element,
+        ): element is HTMLElement =>
+          element !== null,
+      );
 
     /*
      * Use GSAP quickTo instead of creating
@@ -444,247 +540,383 @@ export default function Website() {
     const quickSetters = {
       logoX: logo
         ? gsap.quickTo(logo, "x", {
-            duration: 0.45,
-            ease: "power3.out",
-          })
+          duration: 0.45,
+          ease: "power3.out",
+        })
         : null,
 
       logoY: logo
         ? gsap.quickTo(logo, "y", {
-            duration: 0.45,
-            ease: "power3.out",
-          })
+          duration: 0.45,
+          ease: "power3.out",
+        })
         : null,
 
       contentX: content
         ? gsap.quickTo(content, "x", {
-            duration: 0.5,
-            ease: "power3.out",
-          })
+          duration: 0.5,
+          ease: "power3.out",
+        })
         : null,
 
       contentY: content
         ? gsap.quickTo(content, "y", {
-            duration: 0.5,
-            ease: "power3.out",
-          })
+          duration: 0.5,
+          ease: "power3.out",
+        })
         : null,
 
       goldX: goldGlow
         ? gsap.quickTo(goldGlow, "x", {
-            duration: 0.65,
-            ease: "power3.out",
-          })
+          duration: 0.65,
+          ease: "power3.out",
+        })
         : null,
 
       goldY: goldGlow
         ? gsap.quickTo(goldGlow, "y", {
-            duration: 0.65,
-            ease: "power3.out",
-          })
+          duration: 0.65,
+          ease: "power3.out",
+        })
         : null,
 
       burgundyX: burgundyGlow
-        ? gsap.quickTo(burgundyGlow, "x", {
+        ? gsap.quickTo(
+          burgundyGlow,
+          "x",
+          {
             duration: 0.65,
             ease: "power3.out",
-          })
+          },
+        )
         : null,
 
       burgundyY: burgundyGlow
-        ? gsap.quickTo(burgundyGlow, "y", {
+        ? gsap.quickTo(
+          burgundyGlow,
+          "y",
+          {
             duration: 0.65,
             ease: "power3.out",
-          })
+          },
+        )
         : null,
 
       titleX: titleGlow
         ? gsap.quickTo(titleGlow, "x", {
-            duration: 0.55,
-            ease: "power3.out",
-          })
+          duration: 0.55,
+          ease: "power3.out",
+        })
         : null,
 
       titleY: titleGlow
         ? gsap.quickTo(titleGlow, "y", {
-            duration: 0.55,
-            ease: "power3.out",
-          })
+          duration: 0.55,
+          ease: "power3.out",
+        })
         : null,
     };
 
-    const letterSetters = letters.map((letter) => ({
-      x: gsap.quickTo(letter, "x", {
-        duration: 0.4,
-        ease: "power3.out",
-      }),
+    const letterSetters =
+      letters.map((letter) => ({
+        x: gsap.quickTo(letter, "x", {
+          duration: 0.4,
+          ease: "power3.out",
+        }),
 
-      y: gsap.quickTo(letter, "y", {
-        duration: 0.4,
-        ease: "power3.out",
-      }),
+        y: gsap.quickTo(letter, "y", {
+          duration: 0.4,
+          ease: "power3.out",
+        }),
 
-      rotationX: gsap.quickTo(letter, "rotationX", {
-        duration: 0.4,
-        ease: "power3.out",
-      }),
+        rotationX: gsap.quickTo(
+          letter,
+          "rotationX",
+          {
+            duration: 0.4,
+            ease: "power3.out",
+          },
+        ),
 
-      rotationY: gsap.quickTo(letter, "rotationY", {
-        duration: 0.4,
-        ease: "power3.out",
-      }),
-    }));
+        rotationY: gsap.quickTo(
+          letter,
+          "rotationY",
+          {
+            duration: 0.4,
+            ease: "power3.out",
+          },
+        ),
+      }));
 
-    const updateParallax = () => {
-      mouseFrame.current = null;
+    const updateParallax =
+      () => {
+        mouseFrame.current =
+          null;
 
-      if (!mouseActive.current) {
-        return;
-      }
+        if (
+          !mouseActive.current
+        ) {
+          return;
+        }
 
-      const { x, y } = mousePosition.current;
+        const {
+          x,
+          y,
+        } =
+          mousePosition.current;
 
-      quickSetters.logoX?.(x * 16);
+        quickSetters.logoX?.(
+          x * 16,
+        );
 
-      quickSetters.logoY?.(y * 16);
+        quickSetters.logoY?.(
+          y * 16,
+        );
 
-      quickSetters.contentX?.(x * -7);
+        quickSetters.contentX?.(
+          x * -7,
+        );
 
-      quickSetters.contentY?.(y * -7);
+        quickSetters.contentY?.(
+          y * -7,
+        );
 
-      quickSetters.goldX?.(x * 28);
+        quickSetters.goldX?.(
+          x * 28,
+        );
 
-      quickSetters.goldY?.(y * 28);
+        quickSetters.goldY?.(
+          y * 28,
+        );
 
-      quickSetters.burgundyX?.(x * -20);
+        quickSetters.burgundyX?.(
+          x * -20,
+        );
 
-      quickSetters.burgundyY?.(y * -20);
+        quickSetters.burgundyY?.(
+          y * -20,
+        );
 
-      quickSetters.titleX?.(x * 18);
+        quickSetters.titleX?.(
+          x * 18,
+        );
 
-      quickSetters.titleY?.(y * 12);
+        quickSetters.titleY?.(
+          y * 12,
+        );
 
-      letterSetters.forEach((setter, index) => {
-        const center = index - (letters.length - 1) / 2;
+        letterSetters.forEach(
+          (
+            setter,
+            index,
+          ) => {
+            const center =
+              index -
+              (letters.length -
+                1) /
+              2;
 
-        setter.x(x * (2.5 + Math.abs(center) * 0.35));
+            setter.x(
+              x *
+              (2.5 +
+                Math.abs(
+                  center,
+                ) *
+                0.35),
+            );
 
-        setter.y(y * (1.8 + Math.abs(center) * 0.25));
+            setter.y(
+              y *
+              (1.8 +
+                Math.abs(
+                  center,
+                ) *
+                0.25),
+            );
 
-        setter.rotationY(x * 2.5);
+            setter.rotationY(
+              x * 2.5,
+            );
 
-        setter.rotationX(y * -1.5);
-      });
-    };
-
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = hero.getBoundingClientRect();
-
-      if (
-        event.clientX < rect.left ||
-        event.clientX > rect.right ||
-        event.clientY < rect.top ||
-        event.clientY > rect.bottom
-      ) {
-        return;
-      }
-
-      mousePosition.current = {
-        x: (event.clientX - rect.left) / rect.width - 0.5,
-
-        y: (event.clientY - rect.top) / rect.height - 0.5,
+            setter.rotationX(
+              y * -1.5,
+            );
+          },
+        );
       };
 
-      mouseActive.current = true;
+    const handleMouseMove =
+      (event: MouseEvent) => {
+        const rect =
+          hero.getBoundingClientRect();
 
-      if (mouseFrame.current === null) {
-        mouseFrame.current = requestAnimationFrame(updateParallax);
-      }
-    };
+        if (
+          event.clientX <
+          rect.left ||
+          event.clientX >
+          rect.right ||
+          event.clientY <
+          rect.top ||
+          event.clientY >
+          rect.bottom
+        ) {
+          return;
+        }
+
+        mousePosition.current = {
+          x:
+            (event.clientX -
+              rect.left) /
+            rect.width -
+            0.5,
+
+          y:
+            (event.clientY -
+              rect.top) /
+            rect.height -
+            0.5,
+        };
+
+        mouseActive.current =
+          true;
+
+        if (
+          mouseFrame.current ===
+          null
+        ) {
+          mouseFrame.current =
+            requestAnimationFrame(
+              updateParallax,
+            );
+        }
+      };
 
     /*
      * Reset parallax when mouse leaves hero.
      */
 
-    const resetParallax = () => {
-      mouseActive.current = false;
+    const resetParallax =
+      () => {
+        mouseActive.current =
+          false;
 
-      if (mouseFrame.current !== null) {
-        cancelAnimationFrame(mouseFrame.current);
+        if (
+          mouseFrame.current !==
+          null
+        ) {
+          cancelAnimationFrame(
+            mouseFrame.current,
+          );
 
-        mouseFrame.current = null;
-      }
+          mouseFrame.current =
+            null;
+        }
 
-      /*
-       * Reset normal parallax.
-       */
+        /*
+         * Reset normal parallax.
+         */
 
-      gsap.to(parallaxElements, {
-        x: 0,
-        y: 0,
-        duration: 0.65,
-        ease: "power3.out",
-        overwrite: true,
-      });
+        gsap.to(
+          parallaxElements,
+          {
+            x: 0,
+            y: 0,
+            duration: 0.65,
+            ease: "power3.out",
+            overwrite: true,
+          },
+        );
 
-      /*
-       * Reset letter position.
-       */
+        /*
+         * Reset letter position.
+         */
 
-      gsap.to(letters, {
-        x: 0,
-        y: 0,
-        duration: 0.55,
-        ease: "power3.out",
-        overwrite: true,
-      });
+        gsap.to(
+          letters,
+          {
+            x: 0,
+            y: 0,
+            duration: 0.55,
+            ease: "power3.out",
+            overwrite: true,
+          },
+        );
 
-      /*
-       * Reset 3D rotation.
-       *
-       * Kept as a separate tween so the
-       * existing GSAP 3D animation is not
-       * disrupted.
-       */
+        /*
+         * Reset 3D rotation.
+         *
+         * Kept as a separate tween so the
+         * existing GSAP 3D animation is not
+         * disrupted.
+         */
 
-      letters.forEach((letter) => {
-        gsap.to(letter, {
-          rotationX: 0,
-          rotationY: 0,
-          duration: 0.55,
-          ease: "power3.out",
-          overwrite: true,
-        });
-      });
-    };
+        letters.forEach(
+          (letter) => {
+            gsap.to(
+              letter,
+              {
+                rotationX: 0,
+                rotationY: 0,
+                duration: 0.55,
+                ease: "power3.out",
+                overwrite: true,
+              },
+            );
+          },
+        );
+      };
 
-    hero.addEventListener("mousemove", handleMouseMove, {
-      passive: true,
-    });
+    hero.addEventListener(
+      "mousemove",
+      handleMouseMove,
+      {
+        passive: true,
+      },
+    );
 
-    hero.addEventListener("mouseleave", resetParallax);
+    hero.addEventListener(
+      "mouseleave",
+      resetParallax,
+    );
 
     return () => {
-      hero.removeEventListener("mousemove", handleMouseMove);
+      hero.removeEventListener(
+        "mousemove",
+        handleMouseMove,
+      );
 
-      hero.removeEventListener("mouseleave", resetParallax);
+      hero.removeEventListener(
+        "mouseleave",
+        resetParallax,
+      );
 
-      if (mouseFrame.current !== null) {
-        cancelAnimationFrame(mouseFrame.current);
+      if (
+        mouseFrame.current !==
+        null
+      ) {
+        cancelAnimationFrame(
+          mouseFrame.current,
+        );
 
-        mouseFrame.current = null;
+        mouseFrame.current =
+          null;
       }
 
-      mouseActive.current = false;
+      mouseActive.current =
+        false;
 
       /*
        * Kill only the tweens created
        * by this parallax instance.
        */
 
-      gsap.killTweensOf(parallaxElements);
+      gsap.killTweensOf(
+        parallaxElements,
+      );
 
-      gsap.killTweensOf(letters);
+      gsap.killTweensOf(
+        letters,
+      );
     };
   }, [introComplete]);
 
@@ -698,7 +930,13 @@ export default function Website() {
     <>
       <SmoothScroll />
 
-      {!introComplete && <IntroScreen onComplete={handleIntroComplete} />}
+      {!introComplete && (
+        <IntroScreen
+          onComplete={
+            handleIntroComplete
+          }
+        />
+      )}
 
       <main
         id="main-content"
@@ -707,7 +945,10 @@ export default function Website() {
           bg-[#080808]
           transition-opacity
           duration-700
-          ${introComplete ? "opacity-100" : "pointer-events-none opacity-0"}
+          ${introComplete
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+          }
         `}
       >
         {/* ======================================================
@@ -852,7 +1093,8 @@ export default function Website() {
                       transparent 1px
                     )
                   `,
-                  backgroundSize: "80px 80px",
+                  backgroundSize:
+                    "80px 80px",
                 }}
               />
             </div>
@@ -868,7 +1110,8 @@ export default function Website() {
               style={{
                 backgroundImage:
                   "radial-gradient(circle at center, rgba(198,146,46,0.8) 1px, transparent 1px)",
-                backgroundSize: "38px 38px",
+                backgroundSize:
+                  "38px 38px",
               }}
             />
           </div>
@@ -1101,10 +1344,14 @@ export default function Website() {
                     "
                     aria-label="SHRINIK CLUB"
                   >
-                    {"SHRINIK CLUB".split("").map((letter, index) => (
-                      <span
-                        key={`${letter}-${index}`}
-                        className="
+                    {"SHRINIK CLUB".split("").map(
+                      (
+                        letter,
+                        index,
+                      ) => (
+                        <span
+                          key={`${letter}-${index}`}
+                          className="
                             hero-letter
                             relative
                             inline-block
@@ -1114,10 +1361,11 @@ export default function Website() {
                             text-transparent
                             will-change-transform
                           "
-                      >
-                        {letter === " " ? "\u00A0" : letter}
-                      </span>
-                    ))}
+                        >
+                          {letter === " " ? "\u00A0" : letter}
+                        </span>
+                      ),
+                    )}
                   </h1>
 
                   {/* BASELINE */}
@@ -1180,9 +1428,11 @@ export default function Website() {
                   >
                     Where technology meets culture.
                     <br />
+
                     <span className="text-white/25">
-                      A student-driven community at G.L. Bajaj built around
-                      creativity, technology and expression.
+                      A student-driven community at
+                      G.L. Bajaj built around creativity,
+                      technology and expression.
                     </span>
                   </p>
                 </div>
@@ -1222,7 +1472,9 @@ export default function Website() {
                       hover:shadow-[0_0_40px_rgba(198,146,46,0.2)]
                     "
                   >
-                    <span className="relative z-10">Explore Shrinik</span>
+                    <span className="relative z-10">
+                      Explore Shrinik
+                    </span>
 
                     <span
                       className="
@@ -1264,6 +1516,7 @@ export default function Website() {
                     "
                   >
                     Our Team
+
                     <span
                       className="
                         transition-transform
@@ -1470,8 +1723,8 @@ export default function Website() {
             <div className="mb-12 md:mb-16">
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-[#C6922E]" />
-                <span className="text-[9px] uppercase tracking-[0.4em] text-[#C6922E]">
-                  Faculty &amp; Department
+                <span className="text-[9px] uppercase tracking-[0.38em] text-[#C6922E]">
+                  Academic Leadership
                 </span>
               </div>
 
@@ -1479,13 +1732,15 @@ export default function Website() {
                 className="
                   mt-6
                   max-w-4xl
-                  text-5xl
+                  text-4xl
                   font-medium
-                  leading-[0.9]
-                  tracking-[-0.055em]
+                  leading-[1.08]
+                  tracking-[-0.045em]
                   text-[#F5F1E8]
-                  sm:text-6xl
-                  md:text-7xl
+                  sm:text-5xl
+                  md:text-6xl
+                  lg:text-7xl
+                  lg:leading-[1.04]
                 "
               >
                 Academic leadership.
@@ -1493,10 +1748,9 @@ export default function Website() {
                 <span className="text-white/25">The foundation behind us.</span>
               </h2>
 
-              <p className="mt-7 max-w-2xl text-sm leading-7 text-white/40 md:text-base md:leading-8">
-                The people guiding the Computer Science &amp; Engineering
-                community at G.L. Bajaj — with Shrinik growing alongside that
-                ecosystem.
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-white/45 md:text-base md:leading-8">
+                The mentors and leaders guiding the Computer Science &amp; Engineering
+                community at G.L. Bajaj, supporting Shrinik as it grows alongside that ecosystem.
               </p>
             </div>
 
@@ -1577,71 +1831,14 @@ export default function Website() {
                       md:text-6xl
                     "
                   >
-                    Prof. (Dr.) Sansar Singh Chauhan
+                    Dr. Sansar S. Chauhan
                   </h3>
 
-                  <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-[#C6922E]/90 md:text-base">
-                    Professor &amp; Head, Department of Computer Science &amp;
-                    Engineering
-                  </p>
-
                   <p className="mt-5 max-w-2xl text-base leading-7 text-white/55 md:text-lg md:leading-8">
-                    A Mentor for Innovation, Technology and Student Growth.
-                    Prof. (Dr.) Sansar Singh Chauhan contributes to building an
-                    environment where students are encouraged to learn
-                    continuously, explore emerging technologies and transform
-                    ideas into practical solutions.
+                    Head of the Department of Computer Science and Engineering at
+                    G.L. Bajaj, guiding students and faculty towards academic
+                    excellence, innovation and meaningful growth.
                   </p>
-
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/35 md:text-base md:leading-8">
-                    His academic and research contributions span contemporary
-                    computing and communication technologies, including wireless
-                    sensor networks, artificial intelligence, blockchain and
-                    6G-enabled applications.
-                  </p>
-
-                  <div className="mt-7 grid gap-2 sm:grid-cols-2">
-                    {[
-                      "Wireless Sensor Networks",
-                      "Artificial Intelligence",
-                      "Blockchain",
-                      "6G-enabled Applications",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.015] px-4 py-3"
-                      >
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#C6922E] shadow-[0_0_10px_rgba(198,146,46,0.55)]" />
-                        <span className="text-[9px] uppercase tracking-[0.18em] text-white/45">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-7 border-t border-white/[0.07] pt-6">
-                    <p className="text-sm leading-7 text-white/38 md:text-[15px] md:leading-8">
-                      Dr. Chauhan has also been associated with research and
-                      innovation activities at GL Bajaj, including the Council
-                      of Science &amp; Technology, Uttar Pradesh-supported
-                      project “Emotion Detection and Aiding Mental Health,”
-                      where he served as Project Coordinator.
-                    </p>
-                  </div>
-
-                  <div className="mt-5 rounded-2xl border border-[#C6922E]/10 bg-[#C6922E]/[0.025] p-5">
-                    <p className="text-[9px] uppercase tracking-[0.28em] text-[#C6922E]/75">
-                      Shrinik Mentorship
-                    </p>
-                    <p className="mt-3 text-sm leading-7 text-white/40 md:text-[15px] md:leading-8">
-                      Dr. Sansar Singh Chauhan has played an important role in
-                      nurturing Shrinik Club as a platform for student growth,
-                      innovation and practical learning. His guidance encourages
-                      students to explore emerging technologies, strengthen
-                      their technical and problem-solving skills, and approach
-                      new challenges with confidence.
-                    </p>
-                  </div>
 
                   <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3">
                     <span className="text-[8px] uppercase tracking-[0.25em] text-white/35">
@@ -1653,7 +1850,7 @@ export default function Website() {
                     </span>
                   </div>
 
-                  <div className="mt-8">
+                  <div className="mt-8 flex flex-wrap items-center gap-3.5">
                     <a
                       href="https://www.linkedin.com/in/sansar-s-chauhan-ph-d-4969b223/"
                       target="_blank"
@@ -1686,6 +1883,37 @@ export default function Website() {
                       LinkedIn Profile
                       <span className="text-[#C6922E]">↗</span>
                     </a>
+
+                    <a
+                      href="mailto:hod.cse@glbitm.ac.in"
+                      aria-label="Official Contact Email: hod.cse@glbitm.ac.in"
+                      title="Send Email to HOD"
+                      className="
+                        inline-flex
+                        items-center
+                        gap-2.5
+                        rounded-full
+                        border
+                        border-[#C6922E]/25
+                        bg-[#C6922E]/[0.04]
+                        px-5
+                        py-3
+                        text-[9px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-white/60
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:border-[#C6922E]/60
+                        hover:bg-[#C6922E]/[0.09]
+                        hover:text-[#F5F1E8]
+                      "
+                    >
+                      <Mail size={14} className="text-[#C6922E]" />
+                      <span className="text-white/30">Official:</span>
+                      <span className="text-[#C6922E]/90 lowercase tracking-normal text-xs font-normal">hod.cse@glbitm.ac.in</span>
+                    </a>
                   </div>
                 </div>
 
@@ -1694,7 +1922,7 @@ export default function Website() {
                   <button
                     type="button"
                     onClick={() => setHodPhotoOpen(true)}
-                    aria-label="View enlarged photo of Prof. (Dr.) Sansar Singh Chauhan"
+                    aria-label="View enlarged photo of Dr. Sansar S. Chauhan"
                     className="group relative block w-full cursor-zoom-in rounded-[1.75rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
                   >
                     <div
@@ -1716,7 +1944,7 @@ export default function Website() {
                       <div className="pointer-events-none absolute inset-2 z-20 rounded-[1.3rem] border border-[#E3C477]/20" />
                       <img
                         src="/images/hod-sansar-chauhan.webp"
-                        alt="Prof. (Dr.) Sansar Singh Chauhan, Professor & Head of Department"
+                        alt="Dr. Sansar S. Chauhan, Head of Department"
                         width={450}
                         height={450}
                         loading="lazy"
@@ -1733,227 +1961,344 @@ export default function Website() {
               </div>
             </article>
 
-            {/* FACULTY COORDINATORS */}
-
-            <div className="mt-10">
-              <div className="mb-6 flex items-center gap-3">
-                <span className="h-px w-8 bg-[#C6922E]/70" />
-                <span className="text-[10px] uppercase tracking-[0.34em] text-[#C6922E]">
-                  Faculty Coordinators
-                </span>
-                <span className="h-px flex-1 bg-white/[0.07]" />
-              </div>
-
-              <div className="grid gap-8 lg:grid-cols-2">
-                {/* SAIJSHREE SHRIVASTAVA */}
-                <article
-                  className="
-                    relative
-                    overflow-hidden
-                    rounded-[1.75rem]
-                    border
-                    border-white/[0.08]
-                    bg-gradient-to-br
-                    from-[#10080A]
-                    via-[#0C090A]
-                    to-[#080808]
-                    p-6
-                    sm:p-8
-                  "
-                >
-                  <div className="pointer-events-none absolute right-[-18%] top-[-28%] h-64 w-64 rounded-full bg-[#650018]/10 blur-[90px]" />
-
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3">
-                      <span className="h-px w-7 bg-[#C6922E]/70" />
-                      <span className="text-[9px] uppercase tracking-[0.34em] text-[#C6922E]">
-                        Faculty Coordinator
-                      </span>
-                    </div>
-
-                    <div className="mt-6 grid items-center gap-6 sm:grid-cols-[220px_1fr]">
-                      <button
-                        type="button"
-                        onClick={() => setFacultyPhotoOpen(true)}
-                        aria-label="View enlarged photo of Faculty Coordinator Saijshree Shrivastava"
-                        className="group relative block w-full cursor-zoom-in rounded-[1.35rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
-                      >
-                        <div className="relative aspect-square overflow-hidden rounded-[1.35rem] border border-[#C6922E]/30 bg-[#16090C] p-2 shadow-[0_0_55px_rgba(198,146,46,0.07)]">
-                          <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.05rem] border border-white/10" />
-                          <img
-                            src="/images/faculty-coordinator.webp"
-                            alt="Saijshree Shrivastava, Faculty Coordinator"
-                            width={360}
-                            height={360}
-                            loading="lazy"
-                            decoding="async"
-                            className="h-full w-full rounded-[1.05rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
-                            draggable={false}
-                          />
-                        </div>
-                      </button>
-
-                      <div>
-                        <p className="text-[8px] uppercase tracking-[0.3em] text-white/25">
-                          Faculty Coordinator
-                        </p>
-                        <h3 className="mt-2 text-3xl font-medium tracking-[-0.035em] text-[#F5F1E8] sm:text-4xl">
-                          Saijshree Shrivastava
-                        </h3>
-                        <p className="mt-3 text-xs font-medium uppercase tracking-[0.16em] text-[#C6922E]/80">
-                          Faculty Coordinator · Shrinik Club
-                        </p>
-                        <p className="mt-4 text-sm leading-7 text-white/40">
-                          Faculty guidance and support for the Shrinik student
-                          community, helping students turn ideas into meaningful
-                          initiatives and experiences.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                {/* KIRAN SINGH */}
-                <article
-                  className="
-                    relative
-                    overflow-hidden
-                    rounded-[1.75rem]
-                    border
-                    border-white/[0.08]
-                    bg-gradient-to-br
-                    from-[#10080A]
-                    via-[#0C090A]
-                    to-[#080808]
-                    p-6
-                    sm:p-8
-                  "
-                >
-                  <div className="pointer-events-none absolute right-[-18%] top-[-28%] h-64 w-64 rounded-full bg-[#650018]/10 blur-[90px]" />
-
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3">
-                      <span className="h-px w-7 bg-[#C6922E]/70" />
-                      <span className="text-[9px] uppercase tracking-[0.34em] text-[#C6922E]">
-                        Faculty Coordinator
-                      </span>
-                    </div>
-
-                    <div className="mt-6 grid items-center gap-6 sm:grid-cols-[220px_1fr]">
-                      <button
-                        type="button"
-                        onClick={() => setKiranPhotoOpen(true)}
-                        aria-label="View enlarged photo of Faculty Coordinator Ms. Kiran Singh"
-                        className="group relative block w-full cursor-zoom-in rounded-[1.35rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
-                      >
-                        <div className="relative aspect-square overflow-hidden rounded-[1.35rem] border border-[#C6922E]/30 bg-[#16090C] p-2 shadow-[0_0_55px_rgba(198,146,46,0.07)]">
-                          <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.05rem] border border-white/10" />
-                          <img
-                            src="/images/kiran-singh.webp"
-                            alt="Ms. Kiran Singh, Faculty Coordinator"
-                            width={360}
-                            height={360}
-                            loading="lazy"
-                            decoding="async"
-                            className="h-full w-full rounded-[1.05rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
-                            draggable={false}
-                          />
-                        </div>
-                      </button>
-
-                      <div>
-                        <p className="text-[8px] uppercase tracking-[0.3em] text-white/25">
-                          Faculty Coordinator
-                        </p>
-                        <h3 className="mt-2 text-3xl font-medium tracking-[-0.035em] text-[#F5F1E8] sm:text-4xl">
-                          Ms. Kiran Singh
-                        </h3>
-                        <p className="mt-3 text-xs font-medium uppercase tracking-[0.16em] text-[#C6922E]/80">
-                          Assistant Professor · Department of CSE
-                        </p>
-                        <p className="mt-4 text-sm leading-7 text-white/40">
-                          As Faculty Coordinator, she provides direction,
-                          encouragement and student-first mentorship while
-                          helping Shrinik students turn ideas into action.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            </div>
-
-            {/* ABOUT DEPARTMENT */}
+            {/* FACULTY COORDINATOR FEATURE CARD */}
             <article
               className="
                 mt-10
                 relative
                 overflow-hidden
-                rounded-[1.75rem]
+                rounded-[2rem]
                 border
-                border-[#C6922E]/15
+                border-white/[0.09]
                 bg-gradient-to-br
-                from-[#16090C]/85
-                via-[#0F090A]
-                to-black/70
+                from-[#14090C]
+                via-[#0D0A0B]
+                to-[#080808]
                 p-6
+                shadow-[0_30px_100px_rgba(0,0,0,0.38)]
                 sm:p-8
+                md:p-10
               "
             >
-              <div className="pointer-events-none absolute bottom-[-30%] right-[-10%] h-72 w-72 rounded-full bg-[#C6922E]/[0.04] blur-[100px]" />
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  left-[-8%]
+                  top-[-25%]
+                  h-[480px]
+                  w-[480px]
+                  rounded-full
+                  bg-[#650018]/10
+                  blur-[125px]
+                "
+              />
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  bottom-[-30%]
+                  right-[-8%]
+                  h-[340px]
+                  w-[340px]
+                  rounded-full
+                  bg-[#C6922E]/[0.03]
+                  blur-[110px]
+                "
+              />
 
-              <div className="relative z-10">
-                <div className="flex items-center gap-3">
-                  <span className="text-[8px] uppercase tracking-[0.34em] text-[#C6922E]">
-                    About Department
-                  </span>
-                  <span className="h-px flex-1 bg-white/[0.08]" />
-                  <span className="text-[8px] uppercase tracking-[0.2em] text-white/20">
-                    CSE · GLBITM
-                  </span>
-                </div>
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  items-center
+                  gap-8
+                  lg:grid-cols-[1fr_270px]
+                  xl:grid-cols-[1fr_290px]
+                "
+              >
+                {/* COORDINATOR CONTENT (COMPACT TEXT) */}
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-6 bg-[#C6922E]/70" />
+                    <span className="text-[8px] uppercase tracking-[0.34em] text-[#C6922E]">
+                      Faculty Coordinator
+                    </span>
+                  </div>
 
-                <p className="mt-6 text-sm font-medium leading-6 text-[#F5F1E8]/85 md:text-base md:leading-7">
-                  B.Tech (4 Years), B.Tech.-Hindi (4 Years) &amp; M.Tech (2
-                  Years), Approved by AICTE
-                </p>
-
-                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-[#C6922E]/75">
-                  Affiliated to Dr. A.P.J. Abdul Kalam Technical University
-                </p>
-
-                <div className="mt-6 border-t border-white/[0.07] pt-6">
-                  <p className="text-sm leading-7 text-white/40 md:text-[15px] md:leading-8">
-                    The Department of Computer Science &amp; Engineering at GL
-                    Bajaj Institute of Technology and Management was
-                    established in the year 2005 with a vision to help the IT
-                    boom and fulfil the need of dynamic Software Engineers
-                    globally. Since then, especially in the last ten years of
-                    the IT revolution, the department has taken long strides
-                    and is now among one of the best department in the
-                    college. The Department aims to nurture students in terms
-                    of modern computer techniques and to prepare them, to cope
-                    well with the technical advancements in future. Computer
-                    Science being the flagship branch of Engineering takes
-                    focus in scientific research, scientific programming, and
-                    software engineering.
-                  </p>
-                </div>
-
-                <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-white/[0.07] pt-5">
-                  <span className="text-[8px] uppercase tracking-[0.25em] text-white/20">
-                    Official Contact
-                  </span>
-                  <span className="h-1 w-1 rounded-full bg-[#C6922E]/60" />
-                  <a
-                    href="mailto:hod.cse@glbitm.ac.in"
-                    className="text-xs text-[#C6922E]/80 transition-colors hover:text-[#F5F1E8]"
+                  <h3
+                    className="
+                      mt-4
+                      text-2xl
+                      font-medium
+                      leading-tight
+                      tracking-[-0.035em]
+                      text-[#F5F1E8]
+                      sm:text-3xl
+                    "
                   >
-                    hod.cse@glbitm.ac.in
-                  </a>
+                    Saijshree Shrivastava
+                  </h3>
+
+                  <p className="mt-3.5 max-w-xl text-sm leading-6 text-white/50 md:text-[14.5px] md:leading-7">
+                    Faculty Coordinator of Shrinik, providing continuous guidance,
+                    mentorship, and institutional support to student initiatives across
+                    technology, culture, and creative avenues at G.L. Bajaj.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      G.L. Bajaj Institute of Technology &amp; Management
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      CSE Department
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      Shrinik Club
+                    </span>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/saijshree-srivastava-0012ba177/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Saijshree Shrivastava on LinkedIn"
+                      title="View LinkedIn Profile"
+                      className="
+                        inline-flex
+                        items-center
+                        gap-2.5
+                        rounded-full
+                        border
+                        border-white/10
+                        bg-white/[0.02]
+                        px-4
+                        py-2.5
+                        text-[8px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-white/55
+                        transition-all
+                        duration-300
+                        hover:-translate-y-0.5
+                        hover:border-[#C6922E]/50
+                        hover:bg-[#C6922E]/[0.07]
+                        hover:text-[#F5F1E8]
+                      "
+                    >
+                      <FaLinkedinIn size={13} />
+                      LinkedIn Profile
+                      <span className="text-[#C6922E]">↗</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* COORDINATOR PHOTO (COMPACT) */}
+                <div className="mx-auto w-full max-w-[250px] sm:max-w-[260px]">
+                  <button
+                    type="button"
+                    onClick={() => setFacultyPhotoOpen(true)}
+                    aria-label="View enlarged photo of Faculty Coordinator Saijshree Shrivastava"
+                    className="group relative block w-full cursor-zoom-in rounded-[1.4rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
+                  >
+                    <div
+                      className="
+                        relative
+                        aspect-square
+                        overflow-hidden
+                        rounded-[1.4rem]
+                        border
+                        border-[#C6922E]/30
+                        bg-gradient-to-br
+                        from-[#3A0712]/70
+                        via-[#16090C]
+                        to-[#050505]
+                        p-1.5
+                        shadow-[0_0_40px_rgba(198,146,46,0.07)]
+                      "
+                    >
+                      <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
+                      <img
+                        src="/images/faculty-coordinator.webp"
+                        alt="Saijshree Shrivastava, Faculty Coordinator"
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full rounded-[1.1rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+                        draggable={false}
+                      />
+                    </div>
+                  </button>
+                  <p className="mt-3 text-center text-[7.5px] uppercase tracking-[0.25em] text-white/20">
+                    Faculty Mentorship · Shrinik
+                  </p>
                 </div>
               </div>
             </article>
+
+            {/* KIRAN SINGH FEATURE CARD */}
+            <article
+              className="
+                mt-10
+                relative
+                overflow-hidden
+                rounded-[2rem]
+                border
+                border-white/[0.09]
+                bg-gradient-to-br
+                from-[#14090C]
+                via-[#0D0A0B]
+                to-[#080808]
+                p-6
+                shadow-[0_30px_100px_rgba(0,0,0,0.38)]
+                sm:p-8
+                md:p-10
+              "
+            >
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  left-[-8%]
+                  top-[-25%]
+                  h-[480px]
+                  w-[480px]
+                  rounded-full
+                  bg-[#650018]/10
+                  blur-[125px]
+                "
+              />
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  bottom-[-30%]
+                  right-[-8%]
+                  h-[340px]
+                  w-[340px]
+                  rounded-full
+                  bg-[#C6922E]/[0.03]
+                  blur-[110px]
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  z-10
+                  grid
+                  items-center
+                  gap-8
+                  lg:grid-cols-[1fr_270px]
+                  xl:grid-cols-[1fr_290px]
+                "
+              >
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="h-px w-6 bg-[#C6922E]/70" />
+                    <span className="text-[8px] uppercase tracking-[0.34em] text-[#C6922E]">
+                      Faculty Coordinator
+                    </span>
+                  </div>
+
+                  <h3
+                    className="
+                      mt-4
+                      text-2xl
+                      font-medium
+                      leading-tight
+                      tracking-[-0.035em]
+                      text-[#F5F1E8]
+                      sm:text-3xl
+                    "
+                  >
+                    Ms. Kiran Singh
+                  </h3>
+
+                  <p className="mt-3.5 max-w-xl text-sm leading-6 text-white/50 md:text-[14.5px] md:leading-7">
+                    Assistant Professor · Department of CSE
+                  </p>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/40 md:text-[14.5px] md:leading-7">
+                    As Faculty Coordinator, she provides direction, encouragement
+                    and student-first mentorship while helping Shrinik students
+                    turn ideas into action.
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      G.L. Bajaj Institute of Technology &amp; Management
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      CSE Department
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-[#C6922E]/55" />
+                    <span className="text-[7.5px] uppercase tracking-[0.22em] text-white/30">
+                      Shrinik Club
+                    </span>
+                  </div>
+                </div>
+
+                {/* KIRAN PHOTO: fall back gracefully if the image has not been added yet. */}
+                <div className="mx-auto w-full max-w-[250px] sm:max-w-[260px]">
+                  {kiranPhotoAvailable ? (
+                    <button
+                      type="button"
+                      onClick={() => setKiranPhotoOpen(true)}
+                      aria-label="View enlarged photo of Faculty Coordinator Ms. Kiran Singh"
+                      className="group relative block w-full cursor-zoom-in rounded-[1.4rem] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[#080808]"
+                    >
+                      <div
+                        className="
+                          relative
+                          aspect-square
+                          overflow-hidden
+                          rounded-[1.4rem]
+                          border
+                          border-[#C6922E]/30
+                          bg-gradient-to-br
+                          from-[#3A0712]/70
+                          via-[#16090C]
+                          to-[#050505]
+                          p-1.5
+                          shadow-[0_0_40px_rgba(198,146,46,0.07)]
+                        "
+                      >
+                        <div className="pointer-events-none absolute inset-1.5 z-20 rounded-[1.1rem] border border-[#E3C477]/15" />
+                        <img
+                          src="/images/kiran-singh.webp"
+                          alt="Ms. Kiran Singh, Faculty Coordinator"
+                          width={300}
+                          height={300}
+                          loading="lazy"
+                          decoding="async"
+                          onError={() => setKiranPhotoAvailable(false)}
+                          className="h-full w-full rounded-[1.1rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+                          draggable={false}
+                        />
+                      </div>
+                    </button>
+                  ) : (
+                    <div
+                      className="flex aspect-square w-full items-center justify-center rounded-[1.4rem] border border-[#C6922E]/30 bg-gradient-to-br from-[#3A0712]/70 via-[#16090C] to-[#050505] shadow-[0_0_40px_rgba(198,146,46,0.07)]"
+                      role="img"
+                      aria-label="Photo of Ms. Kiran Singh is not available"
+                    >
+                      <span className="text-6xl font-medium tracking-[-0.06em] text-[#C6922E]/75">KS</span>
+                    </div>
+                  )}
+                  <p className="mt-3 text-center text-[7.5px] uppercase tracking-[0.25em] text-white/20">
+                    Faculty Mentorship · Shrinik
+                  </p>
+                </div>
+              </div>
+            </article>
+
           </div>
         </section>
 
@@ -1977,38 +2322,9 @@ export default function Website() {
             >
               ×
             </button>
-
             <img
               src="/images/hod-sansar-chauhan.webp"
-              alt="Prof. (Dr.) Sansar Singh Chauhan, Professor & Head of Department"
-              width={1000}
-              height={1000}
-              className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
-              onClick={(event) => event.stopPropagation()}
-            />
-          </div>
-        )}
-
-        {kiranPhotoOpen && (
-          <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Enlarged Kiran Singh photo"
-            onClick={() => setKiranPhotoOpen(false)}
-          >
-            <button
-              type="button"
-              onClick={() => setKiranPhotoOpen(false)}
-              aria-label="Close enlarged Kiran Singh photo"
-              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-2xl leading-none text-white/75 transition-all duration-300 hover:border-[#C6922E]/50 hover:bg-[#C6922E]/10 hover:text-[#C6922E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60"
-            >
-              ×
-            </button>
-
-            <img
-              src="/images/kiran-singh.webp"
-              alt="Ms. Kiran Singh, Faculty Coordinator"
+              alt="Dr. Sansar S. Chauhan, Head of Department"
               width={1000}
               height={1000}
               className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
@@ -2033,7 +2349,6 @@ export default function Website() {
             >
               ×
             </button>
-
             <img
               src="/images/faculty-coordinator.webp"
               alt="Saijshree Shrivastava, Faculty Coordinator"
@@ -2041,6 +2356,37 @@ export default function Website() {
               height={1000}
               className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
               onClick={(event) => event.stopPropagation()}
+            />
+          </div>
+        )}
+
+        {kiranPhotoOpen && kiranPhotoAvailable && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-5 backdrop-blur-md sm:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Enlarged Kiran Singh photo"
+            onClick={() => setKiranPhotoOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setKiranPhotoOpen(false)}
+              aria-label="Close enlarged Kiran Singh photo"
+              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-2xl leading-none text-white/75 transition-all duration-300 hover:border-[#C6922E]/50 hover:bg-[#C6922E]/10 hover:text-[#C6922E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6922E]/60"
+            >
+              ×
+            </button>
+            <img
+              src="/images/kiran-singh.webp"
+              alt="Ms. Kiran Singh, Faculty Coordinator"
+              width={1000}
+              height={1000}
+              className="max-h-[90vh] max-w-[92vw] rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.65)]"
+              onClick={(event) => event.stopPropagation()}
+              onError={() => {
+                setKiranPhotoAvailable(false);
+                setKiranPhotoOpen(false);
+              }}
             />
           </div>
         )}
